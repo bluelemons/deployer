@@ -1,0 +1,46 @@
+Setup:
+
+POST a github para configurar el webhook:
+
+https://developer.github.com/v3/repos/hooks/#create-a-hook
+
+permisos para github (no necesitamos porque  y heroku (mediante variables de entorno)
+
+HEROKU: can use a token in the .netrc file see:
+
+https://devcenter.heroku.com/articles/authentication
+
+---
+
+Un endpoint para:
+
+recive un POST con un createEvent:
+
+https://developer.github.com/v3/activity/events/types/#createevent
+
+Si es un tag lo desmiembra... o sea se fija si es alfa, beta, o estable.
+
+Según eso hace un deploy...
+
+---
+
+producción:
+
+git clone $SOURCE_GIT
+git add remote heroku ENV['PRODUCTION_APP']
+git push heroku -f tag:master
+
+---
+
+staging:
+
+git clone
+git add remote heroku ENV['STAGING_APP']
+git push heroku -f tag:master
+
+
+necesita permisos y acceso a github (completo)
+
+Después:
+
+(después estaría bueno tener una interface... Necesita una interface web para configurarlo...)
